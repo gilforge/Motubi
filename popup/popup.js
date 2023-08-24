@@ -6,8 +6,20 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  chrome.storage.sync.get('selectedDictionary', function(data) {
+    if (data.selectedDictionary) {
+      document.getElementById('dictionary').value = data.selectedDictionary;
+    }
+  });
+});
+
 document.getElementById('highlightColor').addEventListener('change', function() {
   chrome.storage.sync.set({ highlightColor: this.value });
+});
+
+document.getElementById('dictionary').addEventListener('change', function() {
+  chrome.storage.sync.set({ selectedDictionary: this.value });
 });
 
 document.getElementById('scanButton').addEventListener('click', function() {
