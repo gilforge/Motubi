@@ -1,2 +1,2 @@
 # Motubi
-Une extension chrome qui surligne les mots répétés plusieurs sur une page web
+Une extension chrome qui surligne les mots répétés plusieurs fois sur une page web
