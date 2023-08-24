@@ -1,13 +1,61 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 10px;
-}
-
-button {
-    padding: 10px;
-    cursor: pointer;
-}
-
-h1 {
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
     color: #333;
-}
+  }
+  
+  h1 {
+    color: #444;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  #scanButton {
+    display: block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 10px auto;
+    border: none;
+    cursor: pointer;
+    width: 200px;
+    text-align: center;
+    transition: 0.3s;
+  }
+  
+  #scanButton:hover {
+    background-color: #45a049;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  input[type="color"],
+  select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  select {
+    appearance: none;
+    background-color: #fff;
+  }
+  
+  #highlightColor {
+    /* width: 40px; Définit la largeur */
+    height: 40px; /* Définit la hauteur */
+    border: 1px solid #ccc; /* Ajoute une bordure */
+    appearance: auto; /* Réinitialise l'apparence à la valeur par défaut du navigateur */
+    -webkit-appearance: auto; /* Pour les navigateurs basés sur WebKit */
+    -moz-appearance: auto; /* Pour Firefox */
+  }
+  

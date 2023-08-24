@@ -34,7 +34,7 @@ document.getElementById('scanButton').addEventListener('click', function() {
         chrome.tabs.sendMessage(tabs[0].id, {
           action: "findDuplicates",
           data: {
-            selectedDictionary: data.selectedDictionary || 'french_dictionary.json',
+            selectedDictionary: data.selectedDictionary || 'pronoms_courants.json',
             highlightColor: data.highlightColor || 'yellow'
           }
         });
