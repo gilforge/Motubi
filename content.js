@@ -1,38 +1,36 @@
-chrome.storage.sync.get(['selectedDictionary', 'highlightColor'], function (data) {
-    var selectedDictionary = data.selectedDictionary || 'french_dictionary.json';
-    var highlightColor = data.highlightColor || 'yellow'; // Fix here
-
-    var dictionaryUrl = `https://raw.githubusercontent.com/gilforge/Motubi/main/dictionary/${selectedDictionary}`; // Use variable here
-
-    fetch(dictionaryUrl)
+function findDuplicates() {
+    chrome.storage.sync.get(['selectedDictionary', 'highlightColor'], function (data) {
+      var selectedDictionary = data.selectedDictionary || 'french_dictionary.json';
+      var highlightColor = data.highlightColor || 'yellow';
+  
+      var dictionaryUrl = `https://raw.githubusercontent.com/gilforge/Motubi/main/dictionary/${selectedDictionary}`;
+  
+      fetch(dictionaryUrl)
         .then(response => response.json())
         .then(dictionary => {
-            findDuplicates(highlightColor, dictionary); // Change here
+          var allWords = document.body.innerText.split(/\s+/);
+          var duplicates = {};
+  
+          allWords.forEach(function(word) {
+            word = word.toLowerCase().replace(/[.,!?]/g, '');
+            if (word.length > 0) {
+              duplicates[word] = (duplicates[word] || 0) + 1;
+            }
+          });
+  
+          for (var word in duplicates) {
+            if (duplicates[word] > 1) {
+              highlightDuplicates(word, dictionary, highlightColor); // Pass word, dictionary, and highlightColor
+            }
+          }
         })
         .catch(error => {
-            console.error('Erreur lors du chargement du dictionnaire:', error);
+          console.error('Erreur lors du chargement du dictionnaire:', error);
         });
-});
-
-function findDuplicates() {
-    var allWords = document.body.innerText.split(/\s+/);
-    var duplicates = {};
-
-    allWords.forEach(function (word) {
-        word = word.toLowerCase().replace(/[.,!?]/g, '');
-        if (word.length > 0) {
-            duplicates[word] = (duplicates[word] || 0) + 1;
-        }
     });
-
-    for (var word in duplicates) {
-        if (duplicates[word] > 1) {
-            highlightDuplicates(word, highlightColor, dictionary);
-        }
-    }
-}
-
-function highlightDuplicates(word) {
+  }
+  
+function highlightDuplicates(word, dictionary, highlightColor) {
     var excludeWords = dictionary.excludeWords || [];
     // var excludeWords = ["le", "la", "les", "un", "une", "de", "des", "es", "est", "et", "à", "a"];
     if (excludeWords.includes(word.toLowerCase())) return;
@@ -97,3 +95,4 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         findDuplicates();
     }
 });
+

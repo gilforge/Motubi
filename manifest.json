@@ -3,7 +3,12 @@
   "name": "Motubi",
   "description": "Une extension chrome qui surligne les mots répétés plusieurs fois sur une page web.",
   "version": "1.0",
-  "permissions": ["activeTab", "scripting", "tabs"],
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "tabs"
+  ],
   "action": {
     "default_popup": "popup/popup.html",
     "default_icon": {
@@ -12,6 +17,16 @@
       "128": "icons/icon128.png"
     }
   },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
   "options_page": "",
   "background": {
     "service_worker": "background.js"
