@@ -49,8 +49,6 @@ function highlightDuplicates(word, dictionary, highlightColor) {
                 parentNodeName === 'noscript' ||
                 parentNodeName === 'style' ||
                 parentNodeName === 'nav' ||
-                parentNodeName === 'a' ||
-                parentNodeName === 'ul' ||
                 parentNodeName === 'button') {
                 return true; // Ignorer si l'un des ancêtres est l'une de ces balises
             }

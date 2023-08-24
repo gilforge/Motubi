@@ -10,6 +10,7 @@ body {
     color: #444;
     text-align: center;
     margin-bottom: 20px;
+    text-transform: uppercase;
   }
   
   #scanButton {
@@ -49,9 +50,8 @@ body {
     appearance: none;
     background-color: #fff;
   }
-  
+    
   #highlightColor {
-    /* width: 40px; Définit la largeur */
     height: 40px; /* Définit la hauteur */
     border: 1px solid #ccc; /* Ajoute une bordure */
     appearance: auto; /* Réinitialise l'apparence à la valeur par défaut du navigateur */
