@@ -1,18 +1,18 @@
 {
   "manifest_version": 3,
-  "name": "Duplicate Finder",
-  "description": "Find and highlight duplicate words on web pages.",
+  "name": "Motubi",
+  "description": "Une extension chrome qui surligne les mots répétés plusieurs fois sur une page web.",
   "version": "1.0",
   "permissions": ["activeTab", "scripting", "tabs"],
   "action": {
-    "default_popup": "popup.html",
+    "default_popup": "popup/popup.html",
     "default_icon": {
-      "16": "icon16.png",
-      "48": "icon48.png",
-      "128": "icon128.png"
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
     }
   },
-  "options_page": "options.html",
+  "options_page": "",
   "background": {
     "service_worker": "background.js"
   }
